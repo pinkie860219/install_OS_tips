@@ -2,7 +2,7 @@
 :PROPERTIES:
 :EXPORT_FILE_NAME: README
 :END:
-** [中文輸入法相關]
+** 中文輸入法相關
 *** apt install gcin之後
     用im-config設定輸入法
 
@@ -17,12 +17,12 @@
     export QT5_IM_MODULE=gcin
     #+END_SRC
 
-** [終端機color theme]
+** 終端機color theme
    Terminal Sexy 可以把轉換主題到特定終端機的格式
    ex:把mac終端機主題輸出成konsole的
 
 
-** [音源調整]
+** 音源調整
    提高 pulseaudio 的解析
 
    在 /etc/pulse/daemon.conf 中加入
