@@ -3,6 +3,9 @@
   - [gcin 可能在 konsole 無法使用](#gcin-可能在-konsole-無法使用)
 - [Terminal color theme](#terminal-color-theme)
 - [音源調整](#音源調整)
+- [藍芽](#藍芽)
+  - [快速連線](#快速連線)
+  - [電腦睡眠喚醒重啟藍芽](#電腦睡眠喚醒重啟藍芽)
 
 
 # 中文輸入法相關
@@ -39,3 +42,33 @@ resample-method = src-sinc-medium-quality
 default-sample-format = s24le
 default-sample-rate = 96000
 ```
+
+# 藍芽
+
+## 快速連線
+
+當已配對過的裝置啟動時，讓電腦自動去連線
+
+改 `/etc/bluetooth/main.conf`
+
+```
+FastConnectable = true
+```
+
+## 電腦睡眠喚醒重啟藍芽
+
+藍芽可能在睡眠喚醒後明明已經斷線，卻看起來還保留睡眠前已連線的狀態，得手動重啟，很不方便，可以用這段 script 讓他自動重啟
+
+`sudo nano /lib/systemd/system-sleep/bt`
+
+```
+#!/bin/sh
+
+case $1 in
+  post)
+    service bluetooth restart
+    ;;
+esac
+```
+
+`sudo chmod +x /lib/systemd/system-sleep/bt`
